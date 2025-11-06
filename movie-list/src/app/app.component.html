@@ -1,0 +1,12 @@
+<div>
+  <h2>Movie List</h2>
+  <div class="movie-list">
+    @for ( movie of movies; track movie) {
+      <div class="movie-item">
+        <img [src]="movie.poster" alt="{{movie.title}}" />
+        <h3>{{ movie.title }}</h3>
+        <button (click)="checkavailability(movie.id)">Check availability</button>
+      </div>
+    }
+  </div>
+</div>
