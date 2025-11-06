@@ -1,0 +1,36 @@
+<div class="ticket-container">
+  <h2>Ticket Availability</h2>
+  
+  @if (movieid !== null) {
+    <div class="availability-card">
+      <div class="icon-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M2 6C2 4.89543 2.89543 4 4 4H20C21.1046 4 22 4.89543 22 6V8H2V6Z"/>
+          <path d="M2 10H22V18C22 19.1046 21.1046 20 20 20H4C2.89543 20 2 19.1046 2 18V10Z"/>
+        </svg>
+      </div>
+      
+      <div class="ticket-info">
+        <p class="label">Available Tickets</p>
+        <p class="count">{{ availableTickets }}</p>
+      </div>
+      
+      <div class="status" [class.low]="availableTickets < 50" [class.medium]="availableTickets >= 50 && availableTickets < 100" [class.high]="availableTickets >= 100">
+        @if (availableTickets < 50) {
+          <span class="badge low">Low Availability</span>
+        } @else if (availableTickets < 100) {
+          <span class="badge medium">Moderate Availability</span>
+        } @else {
+          <span class="badge high">High Availability</span>
+        }
+      </div>
+    </div>
+  } @else {
+    <div class="placeholder">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+      </svg>
+      <p>Select a movie to check ticket availability</p>
+    </div>
+  }
+</div>
